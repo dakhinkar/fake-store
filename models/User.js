@@ -19,7 +19,22 @@ const UserSchema = new Schema({
     isAdmin: {
         type: Boolean,
         default: false
-    }
+    },
+    fav: [
+        {
+            productId: {
+                type: Schema.ObjectId,
+                ref: 'product',
+                required: false
+          }  
+        }
+    ],
+
+    cart: [String
+        // {
+        //     
+        // }
+    ]
 });
 
 module.exports = mongoose.model("User", UserSchema);

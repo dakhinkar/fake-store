@@ -1,7 +1,8 @@
 const express = require('express');
+const path = require('path');
 const dotenv = require('dotenv');
 const mongoose = require('mongoose');
-
+const cors = require('cors');
 
 const  product  = require('./routes/product');
 const cart = require('./routes/cart');
@@ -14,13 +15,16 @@ const app = express();
 dotenv.config();
 
 // middleware
+app.use(express.static(path.join(__dirname + "/public")))
 app.use(cookieParser());
 app.use(express.json());
+app.use(cors());
 // products
 app.use("/api/products/", product);
 // auth
 app.use("/api/auth/", auth);
 app.use("/api/users/", user);
+app.use("/api/users/favorite/", favourite);
 
 app.use((err, req, res, next) => {
     const errorCode = err.status || 500;

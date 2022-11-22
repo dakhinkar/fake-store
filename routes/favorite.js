@@ -1,12 +1,15 @@
 
 const express = require('express');
+const { getAllFavorite, updateFavList } = require('../controllers/favorite');
 const router = express.Router();
 
-// Create Product
-// Update Product by id
-// delete product by id 
-// get Product by Id
-// get All Products
+// Get all favorite list
+router.get('/:userId', getAllFavorite);
+// Add to favourite
+router.put('/:userId/:pId', updateFavList);
+
+// delete from favourite
+// router.delete('/:userId/:pId',);
 
 
 
